@@ -51,7 +51,7 @@ setuptools.setup(
     url = "http://appier-extras-api.hive.pt",
     zip_safe = False,
     packages = [
-        "appier_admin", 
+        "appier_admin",
         "appier_export"
     ],
     package_dir = {
