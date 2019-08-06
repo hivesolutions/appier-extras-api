@@ -52,7 +52,7 @@ class AppierExportApp(appier.WebApp):
 
     @appier.route("/", "GET")
     def index(self):
-        return self.config()
+        return self.import_model("account")
 
     @appier.route("/model/<str:model>", "GET")
     def import_model(self, model):

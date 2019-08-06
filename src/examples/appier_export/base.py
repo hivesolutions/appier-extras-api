@@ -39,10 +39,10 @@ __license__ = "Apache License, Version 2.0"
 
 import appier
 
-import ripe
+import appier_export
 
 def get_api():
-    return ripe.API(
+    return appier_export.API(
         username = appier.conf("EXPORT_USERNAME"),
         password = appier.conf("EXPORT_PASSWORD")
     )

@@ -66,7 +66,6 @@ class API(
         self.username = kwargs.get("username", self.username)
         self.password = kwargs.get("password", self.password)
         self.secret_key = kwargs.get("secret_key", self.secret_key)
-        self.admin = kwargs.get("admin", self.admin)
         self.session_id = kwargs.get("session_id", None)
 
     def build(
@@ -94,10 +93,9 @@ class API(
         session_id = self.get_session_id()
         params["sid"] = session_id
 
-    def login(self, username = None, password = None, admin = None):
+    def login(self, username = None, password = None):
         username = username or self.username
         password = password or self.password
-        admin = admin or self.admin
         url = self.admin_url + "login"
         contents = self.post(
             url,
