@@ -58,7 +58,7 @@ class AppierExportApp(appier.WebApp):
     def import_model(self, model):
         data = self.field("data", {}, cast = dict)
         api = self.get_api()
-        model = api.model_import(model, data)
+        model = api.import_model(model, data)
         return model
 
     def get_api(self):

@@ -39,7 +39,7 @@ __license__ = "Apache License, Version 2.0"
 
 class ModelAPI(object):
 
-    def model_import(self, model, data):
+    def import_model(self, model, data):
         url = self.base_url + "models/%s" % model
         contents = self.post(url, data_j = data)
         return contents
