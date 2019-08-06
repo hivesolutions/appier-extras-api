@@ -19,6 +19,9 @@
 # You should have received a copy of the Apache License along with
 # Hive Appier Framework. If not, see <http://www.apache.org/licenses/>.
 
+__author__ = "João Magalhães <joamag@hive.pt>"
+""" The author(s) of the module """
+
 __version__ = "1.0.0"
 """ The version of the module """
 
@@ -34,8 +37,35 @@ __copyright__ = "Copyright (c) 2008-2019 Hive Solutions Lda."
 __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
-from . import base
-from . import model
+import appier
 
-from .base import API
-from .model import ModelAPI
+from . import base
+
+class AppierExportApp(appier.WebApp):
+
+    def __init__(self, *args, **kwargs):
+        appier.WebApp.__init__(
+            self,
+            name = "appier_export",
+            *args, **kwargs
+        )
+
+    @appier.route("/", "GET")
+    def index(self):
+        return self.config()
+
+    @appier.route("/model/<str:model>", "GET")
+    def import_model(self, model):
+        data = self.field("data", {}, cast = dict)
+        api = self.get_api()
+        model = api.model_import(model, data)
+        return model
+
+    def get_api(self):
+        return base.get_api()
+
+if __name__ == "__main__":
+    app = AppierExportApp()
+    app.serve()
+else:
+    __path__ = []

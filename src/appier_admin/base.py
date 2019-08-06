@@ -39,30 +39,19 @@ __license__ = "Apache License, Version 2.0"
 
 import appier
 
-from . import model
-
-BASE_URL = "http://localhost/api/export/"
+BASE_URL = "http://localhost/api/admin/"
 """ The default base URL to be used when no other
 base URL value is provided to the constructor """
 
-ADMIN_URL = "http://localhost/api/admin/"
-""" The default admin URL to be used when no other
-base URL value is provided to the constructor """
-
-class API(
-    appier.API,
-    model.ModelAPI
-):
+class API(appier.API):
 
     def __init__(self, *args, **kwargs):
         appier.API.__init__(self, *args, **kwargs)
-        self.base_url = appier.conf("EXPORT_URL", BASE_URL)
-        self.admin_url = appier.conf("EXPORT_ADMIN_URL", ADMIN_URL)
-        self.username = appier.conf("EXPORT_USERNAME", None)
-        self.password = appier.conf("EXPORT_PASSWORD", None)
-        self.secret_key = appier.conf("EXPORT_SECRET_KEY", None)
+        self.base_url = appier.conf("ADMIN_URL", BASE_URL)
+        self.username = appier.conf("ADMIN_USERNAME", None)
+        self.password = appier.conf("ADMIN_PASSWORD", None)
+        self.secret_key = appier.conf("ADMIN_SECRET_KEY", None)
         self.base_url = kwargs.get("base_url", self.base_url)
-        self.admin_url = kwargs.get("admin_url", self.admin_url)
         self.username = kwargs.get("username", self.username)
         self.password = kwargs.get("password", self.password)
         self.secret_key = kwargs.get("secret_key", self.secret_key)
@@ -98,7 +87,7 @@ class API(
         username = username or self.username
         password = password or self.password
         admin = admin or self.admin
-        url = self.admin_url + "login"
+        url = self.base_url + "login"
         contents = self.post(
             url,
             callback = False,

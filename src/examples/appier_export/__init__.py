@@ -34,8 +34,8 @@ __copyright__ = "Copyright (c) 2008-2019 Hive Solutions Lda."
 __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
+from . import app
 from . import base
-from . import model
 
-from .base import API
-from .model import ModelAPI
+from .app import RipeApp
+from .base import get_api

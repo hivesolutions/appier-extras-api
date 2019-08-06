@@ -35,7 +35,5 @@ __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
 from . import base
-from . import model
 
 from .base import API
-from .model import ModelAPI
