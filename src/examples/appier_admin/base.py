@@ -19,6 +19,9 @@
 # You should have received a copy of the Apache License along with
 # Hive Appier Framework. If not, see <http://www.apache.org/licenses/>.
 
+__author__ = "João Magalhães <joamag@hive.pt>"
+""" The author(s) of the module """
+
 __version__ = "1.0.0"
 """ The version of the module """
 
@@ -34,8 +37,12 @@ __copyright__ = "Copyright (c) 2008-2019 Hive Solutions Lda."
 __license__ = "Apache License, Version 2.0"
 """ The license for the module """
 
-from . import app
-from . import base
+import appier
 
-from .app import AppierExportApp
-from .base import get_api
+import appier_admin
+
+def get_api():
+    return appier_admin.API(
+        username = appier.conf("ADMIN_USERNAME"),
+        password = appier.conf("ADMIN_PASSWORD")
+    )

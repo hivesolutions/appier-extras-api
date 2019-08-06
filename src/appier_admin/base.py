@@ -103,3 +103,8 @@ class API(appier.API):
         if not self.username: return False
         if not self.password: return False
         return True
+
+    def ping(self):
+        url = self.base_url + "ping"
+        contents = self.get(url, auth = False)
+        return contents
