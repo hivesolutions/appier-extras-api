@@ -40,6 +40,7 @@ __license__ = "Apache License, Version 2.0"
 import appier
 
 from . import model
+from . import database
 
 BASE_URL = "http://localhost/api/export/"
 """ The default base URL to be used when no other
@@ -51,7 +52,8 @@ base URL value is provided to the constructor """
 
 class API(
     appier.API,
-    model.ModelAPI
+    model.ModelAPI,
+    database.DatabaseAPI
 ):
 
     def __init__(self, *args, **kwargs):
